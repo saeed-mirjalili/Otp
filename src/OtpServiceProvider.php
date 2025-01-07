@@ -23,7 +23,7 @@ class OtpServiceProvider extends ServiceProvider
             __DIR__.'/Config/OtpConf.php' => config_path('otp.php'),
             __DIR__.'/Views' => base_path('resources/views/otp'),
             __DIR__.'/Migrations' => database_path('/migrations')
-        ]);
+        ],'otp');
 
 //        $this->publishes([],'views');
     }

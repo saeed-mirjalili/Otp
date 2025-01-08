@@ -2,11 +2,11 @@
 namespace Saeed\Otp\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-//use App\Models\User;
+//use App\Models\OtpUser;
 //use App\Services\OtpService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Saeed\Otp\Models\User;
+use Saeed\Otp\Models\OtpUser;
 use Saeed\Otp\OtpService;
 
 class AuthController extends Controller
@@ -39,9 +39,9 @@ class AuthController extends Controller
             $this->otpService->sendOtp($otp, $request->phone);
             session(['otp' => $otp,'phone' => $request->phone, 'name' => $validData['name']]);
         }else{
-            $user = User::where('name', $request->name)->first();
+            $user = OtpUser::where('name', $request->name)->first();
             if (is_null($user)){
-                return redirect()->back()->with('error', 'User not found');
+                return redirect()->back()->with('error', 'OtpUser not found');
             }
             $this->otpService->sendOtp($otp, $user->phone);
             session(['otp' => $otp,'phone' => $user->phone, 'name' => $validData['name']]);
@@ -54,7 +54,7 @@ class AuthController extends Controller
 
         $request->validate(['otp' => 'required|integer']);
         if ($request->otp == session('otp')) {
-            $user = User::firstOrCreate(
+            $user = OtpUser::firstOrCreate(
                 ['name' => session('name')],
                 ['phone' => session('phone')]
             );

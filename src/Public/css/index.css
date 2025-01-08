@@ -1,0 +1,90 @@
+@font-face {
+    font-family: body;
+    src: url(VarelaRound-Regular.ttf);
+}
+
+*{
+    font-family: body;
+}
+
+body{
+    background-color: #f3f3f3;
+}
+
+.form-page{
+    width: 15%;
+    text-align: center;
+    border: 1px solid silver;
+    border-radius: 15px;
+    padding: 2% 2%;
+    margin: 10% auto;
+    box-shadow: 0 0 5px silver;
+    background-color: white;
+}
+
+.form-page div{
+    margin: 10% auto;
+}
+
+input,button{
+    border: 1px solid silver;
+    border-radius: 15px;
+    background-color: initial;
+    padding: 6%;
+}
+
+button{
+    background-color: #1a202c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+button:hover{
+    background-color: #4b5563;
+}
+
+*:focus {
+    outline: none;
+}
+
+.form-logo{
+    width: 35%;
+}
+
+.otp-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.otp-button {
+    position: absolute;
+    right: 9px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-left: 1px solid #b7b4b4;
+    background-color: initial;
+    color: #424141;
+}
+.otp-button:hover{
+    background-color: #e1e1e1;
+}
+
+.alert{
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+}
+
+.alert-success{
+    background-color: #399339;
+}
+.alert-error{
+    background-color: #ef4444;
+}

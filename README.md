@@ -73,6 +73,3 @@ Step 9: Create Home Page
 
 Now, you can create a home page to utilize the OTP functionality in your Laravel application.
 
-
-
-Feel free to update this README with any additional information specific to your implementation or use case!

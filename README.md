@@ -60,8 +60,8 @@ Step 7: Configure Instance and Token
 
 Open the published configuration file located at config/otp.php. Add the instance and token you received from UltraMsg:
 
-'instance' => env('ULTRAMSG_INSTANCE', 'your_instance_here'),
-'token' => env('ULTRAMSG_TOKEN', 'your_token_here'),
+'WhatsApp_Intance' => instance,
+'WhatsApp_Token' => token,
 
 Step 8: Run Migrations
 

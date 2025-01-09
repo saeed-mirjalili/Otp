@@ -1,75 +1,125 @@
-OTP Authentication Package for Laravel
+# Laravel OTP Authentication Package
 
-This README will guide you through setting up the OTP (One-Time Password) authentication package for your Laravel project.
+This guide walks you through setting up the OTP (One-Time Password) authentication package for your Laravel project.
 
+---
 
-Step 1: Register for UltraMsg
+## Prerequisites
 
+1. A [UltraMsg](https://www.ultramsg.com/) account.
+2. Laravel installed on your project.
 
-Go to UltraMsg and create an account.
+---
 
-After registering, acquire the following parameters:
+## Setup Instructions
 
-Instance
+### 1. Register for UltraMsg
 
-Token
+- Visit [UltraMsg](https://www.ultramsg.com/) and create an account.
+- Obtain the following credentials:
+  - **Instance**
+  - **Token**
 
+---
 
-Step 2: Install the Package
+### 2. Install the OTP Package
 
-Run the following command in your Laravel project's terminal to install the OTP package:
+Run the following command in your Laravel project terminal:
 
+```bash
 composer require saeed/otp:dev-main
+```
 
-Step 3: Update Composer Autoload
+---
 
-Add the following line to the autoload section of your composer.json file:
+### 3. Update Composer Autoload
 
-"Saeed\\Otp\\": "src/"
+1. Open your `composer.json` file.
+2. Add the following line to the `autoload` section:
 
-Then run:
+   ```json
+   "Saeed\\Otp\\": "src/"
+   ```
 
-composer dump-autoload
+3. Run the following command to update the autoloader:
 
-Step 4: Configure Service Provider
+   ```bash
+   composer dump-autoload
+   ```
 
-Open the config/app.php file and add the service provider to the providers array:
+---
 
-Saeed\Otp\OtpServiceProvider::class,
+### 4. Configure the Service Provider
 
-Also, add an alias to the aliases array:
+1. Open the `config/app.php` file.
+2. Add the service provider to the `providers` array:
 
-'Otp' => Saeed\Otp\OtpFacade::class,
+   ```php
+   Saeed\Otp\OtpServiceProvider::class,
+   ```
 
-Step 5: Update Authentication Providers
+3. Add an alias to the `aliases` array:
 
-In config/auth.php, replace the model entry with:
+   ```php
+   'Otp' => Saeed\Otp\OtpFacade::class,
+   ```
 
-'model' => \Saeed\Otp\Models\OtpUser::class,
+---
 
-instead of using your default User model.
+### 5. Update Authentication Providers
 
+1. Open the `config/auth.php` file.
+2. Replace the default model entry with the OTP User model:
 
-Step 6: Publish Configuration File
+   ```php
+   'model' => \Saeed\Otp\Models\OtpUser::class,
+   ```
 
-To publish the configuration file for the package, run:
+---
 
-php artisan vendor:publish --provider="saeed\otp\OtpServiceProvider" --tag="otp" --force
+### 6. Publish Configuration File
 
-Step 7: Configure Instance and Token
+To publish the package configuration, run:
 
-Open the published configuration file located at config/otp.php. Add the instance and token you received from UltraMsg:
+```bash
+php artisan vendor:publish --provider="Saeed\Otp\OtpServiceProvider" --tag="otp" --force
+```
 
-'WhatsApp_Intance' => instance,
-'WhatsApp_Token' => token,
+---
 
-Step 8: Run Migrations
+### 7. Configure Instance and Token
 
-Run the following command to migrate the necessary database tables:
+1. Open the published configuration file: `config/otp.php`.
+2. Add your UltraMsg credentials:
 
+   ```php
+   'WhatsApp_Instance' => 'your_instance',
+   'WhatsApp_Token' => 'your_token',
+   ```
+
+---
+
+### 8. Run Database Migrations
+
+Run the following command to create the required database tables:
+
+```bash
 php artisan migrate
+```
 
-Step 9: Create Home Page
+---
 
-Now, you can create a home page to utilize the OTP functionality in your Laravel application.
+### 9. Create a Home Page
+
+You can now create a home page in your application to implement and utilize OTP functionality.
+
+---
+
+## Notes
+
+- Ensure you have your `.env` file properly configured for database and app settings before running migrations.
+- For more details and advanced usage, refer to the package documentation or contact the package maintainer.
+
+---
+Happy Coding! 🚀
 

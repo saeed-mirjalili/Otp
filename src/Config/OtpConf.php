@@ -2,7 +2,7 @@
 
 return
 [
-    'WhatsApp_Intance' => 'instance103048',
-    'WhatsApp_Token' => 'pa637pkezyprttip',
+    'WhatsApp_Intance' => 'instancexxxxxx',
+    'WhatsApp_Token' => 'xxxxxxxxxxx',
 
 ];

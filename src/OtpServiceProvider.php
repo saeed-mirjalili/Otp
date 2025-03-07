@@ -15,9 +15,7 @@ class OtpServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        require __DIR__ . '\Http\routes.php';
-
-        $this->loadViewsFrom(__DIR__.'/Views','otp');
+        require __DIR__ . '/Http/routes.php';
 
         $this->publishes([
             __DIR__.'/Config/OtpConf.php' => config_path('otp.php'),
@@ -27,6 +25,16 @@ class OtpServiceProvider extends ServiceProvider
             __DIR__.'/Public/img' => public_path('/img'),
         ],'otp');
 
-//        $this->publishes([],'views');
+        // مسیر viewهای publish شده
+        $publishedViewsPath = base_path('resources/views/otp');
+
+        // اگر مسیر publish شده وجود داشت، آن را به عنوان اولین مسیر view ثبت کن
+        if (is_dir($publishedViewsPath)) {
+            $this->loadViewsFrom($publishedViewsPath, 'otp');
+        }
+
+        // ثبت مسیر viewهای پکیج
+        $this->loadViewsFrom(__DIR__.'/Views', 'otp');
     }
+
 }

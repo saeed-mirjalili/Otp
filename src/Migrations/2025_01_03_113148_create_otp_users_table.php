@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('role')->default('user');
+            
             $table->timestamps();
         });
     }

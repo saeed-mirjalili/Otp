@@ -17,12 +17,13 @@ Route::prefix('telegramOtp')->group(function (){
 
     Route::post('/start', [AuthController::class, 'start'])
         ->middleware('web')
-        ->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class)
+//        ->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class)
         ->name('telegram.start');
 
     Route::post('/callback', [AuthController::class, 'handleCallbackQuery'])
         ->middleware('web')
-        ->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
-
+//        ->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
+        ;
+    Route::get('/verify-otp', [AuthController::class, 'verifyOtp']);
 });
 //->middleware('web') برای حل مشکل session در پکیج استفاده شده

@@ -61,11 +61,17 @@
             </div>
 
             <div x-show="activeTab === 'tab2'" class="tab-panel">
-                <a href="https://t.me/SaeedOtpbot?start=register" target="_blank">
+                @php
+                    $uniqueCode = \Illuminate\Support\Str::uuid();
+                @endphp
+                <a href="https://t.me/SaeedOtpbot?start={{ $uniqueCode }}" target="_blank">
                     <button>Start Telegram Bot</button>
                 </a>
                 <form action="{{ route('verify-otp') }}" method="POST">
                     @csrf
+                    <div>
+                        <input type="hidden" name="uuid" value="{{ $uniqueCode }}">
+                    </div>
                     <div>
                         <input type="text" name="otp" placeholder="Enter OTP" required>
                     </div>

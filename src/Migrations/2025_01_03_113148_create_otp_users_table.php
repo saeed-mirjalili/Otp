@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('role')->default('user');
-            
+            $table->integer('otp')->nullable();
+            $table->string('uuid')->nullable();
             $table->timestamps();
         });
     }

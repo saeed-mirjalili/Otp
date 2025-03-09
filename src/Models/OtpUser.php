@@ -1,6 +1,6 @@
 <?php
 
-namespace saeed\otp\Models;
+namespace Saeed\Otp\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

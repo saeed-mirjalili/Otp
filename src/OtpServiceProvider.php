@@ -1,6 +1,6 @@
 <?php
 
-namespace saeed\otp;
+namespace Saeed\Otp;
 use \Illuminate\Support\ServiceProvider;
 class OtpServiceProvider extends ServiceProvider
 {

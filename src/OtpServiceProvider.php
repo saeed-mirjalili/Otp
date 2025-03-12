@@ -7,7 +7,7 @@ class OtpServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('otp', function (){
-            return new OtpService;
+            return new WhatsappOtpService;
         });
 
         $this->mergeConfigFrom(__DIR__.'/Config/OtpConf.php', 'otp');
@@ -25,15 +25,12 @@ class OtpServiceProvider extends ServiceProvider
             __DIR__.'/Public/img' => public_path('/img'),
         ],'otp');
 
-        // مسیر viewهای publish شده
         $publishedViewsPath = base_path('resources/views/otp');
 
-        // اگر مسیر publish شده وجود داشت، آن را به عنوان اولین مسیر view ثبت کن
         if (is_dir($publishedViewsPath)) {
             $this->loadViewsFrom($publishedViewsPath, 'otp');
         }
 
-        // ثبت مسیر viewهای پکیج
         $this->loadViewsFrom(__DIR__.'/Views', 'otp');
     }
 

@@ -1,7 +1,7 @@
 <?php
 namespace Saeed\Otp;
 
-class OtpService
+class WhatsappOtpService
 {
 protected $Instance;
 protected $Token;

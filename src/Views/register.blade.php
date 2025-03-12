@@ -67,7 +67,7 @@
                 <a href="https://t.me/SaeedOtpbot?start={{ $uniqueCode }}" target="_blank">
                     <button>Start Telegram Bot</button>
                 </a>
-                <form action="{{ route('verify-otp') }}" method="POST">
+                <form action="{{ route('verifyOtpTelegram') }}" method="POST">
                     @csrf
                     <div>
                         <input type="hidden" name="uuid" value="{{ $uniqueCode }}">

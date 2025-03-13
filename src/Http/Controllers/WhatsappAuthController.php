@@ -10,7 +10,7 @@ use Saeed\Otp\Models\OtpUser;
 use Saeed\Otp\WhatsappOtpService;
 use Saeed\Otp\TelegramOtpService;
 
-class AuthController extends Controller
+class WhatsappAuthController extends Controller
 {
     protected $WhatsappOtpService;
 

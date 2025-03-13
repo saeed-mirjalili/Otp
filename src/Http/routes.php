@@ -1,15 +1,15 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use \Saeed\Otp\Http\Controllers\AuthController;
+use \Saeed\Otp\Http\Controllers\WhatsappAuthController;
 use \Saeed\Otp\Http\Controllers\TelegramAuthController;
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->middleware('web')->name('login');
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->middleware('web')->name('register');
-Route::get('/logout', [AuthController::class, 'logout'])->middleware('web')->name('logout');
+Route::get('/login', [WhatsappAuthController::class, 'showLoginForm'])->middleware('web')->name('login');
+Route::get('/register', [WhatsappAuthController::class, 'showRegisterForm'])->middleware('web')->name('register');
+Route::get('/logout', [WhatsappAuthController::class, 'logout'])->middleware('web')->name('logout');
 
 Route::prefix('whatsappOtp')->group(function () {
-    Route::post('/send-otp', [AuthController::class, 'sendOtp'])->middleware('web')->name('send-otp');
-    Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->middleware('web')->name('verify-otp');
+    Route::post('/send-otp', [WhatsappAuthController::class, 'sendOtp'])->middleware('web')->name('send-otp');
+    Route::post('/verify-otp', [WhatsappAuthController::class, 'verifyOtp'])->middleware('web')->name('verify-otp');
 });
 
 Route::prefix('telegramOtp')->group(function (){

@@ -32,6 +32,10 @@ class OtpServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__.'/Views', 'otp');
+
+        $this->publishes([
+            __DIR__.'/Models' => base_path('app/Models'),
+        ],'otpModel');
     }
 
 }

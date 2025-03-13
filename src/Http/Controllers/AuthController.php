@@ -77,7 +77,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        Session::forget(['name', 'otp']);
+        Session::forget(['name', 'otp', 'phone']);
 
         return redirect('/')->with('success', 'You logged out successfully');
     }

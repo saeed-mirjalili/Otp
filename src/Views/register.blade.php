@@ -41,12 +41,12 @@
                 <form action="{{ route('send-otp') }}" method="POST">
                     @csrf
                     <div>
-                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="text" name="name" placeholder="Your Name" value="{{ session('name') }}" required>
                     </div>
                     <div class="otp-container">
-                        <input type="text" name="phone" placeholder="Mobile Number" required>
+                        <input type="text" name="phone" placeholder="Mobile Number" value="{{ session('phone') }}" required>
 
-                        <button type="submit" class="otp-button"><span class="icon-key"></span></button>
+                        <button type="submit" class="otp-button">Send</button>
                     </div>
                 </form>
                 <form action="{{ route('verify-otp') }}" method="POST">
@@ -79,10 +79,9 @@
                         <button type="submit">Register</button>
                     </div>
                 </form>
+            </div>
         </div>
     </div>
-
-</div>
 
 
 

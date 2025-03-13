@@ -12,25 +12,72 @@
 <body>
     <div class="form-page">
         <img class="form-logo" src="img/login.svg" />
-        <form action="{{ route('send-otp') }}" method="POST">
-            @csrf
-            <div class="otp-container">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <button type="submit" class="otp-button"><span class="icon-key"></span></button>
-            </div>
-        </form>
 
-        <form action="{{ route('verify-otp') }}" method="POST">
-            @csrf
-            <div>
-                <input type="text" name="otp" placeholder="Enter OTP" required>
+        <div x-data="{ activeTab: 'tab1' }" class="container">
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button
+                    @click="activeTab = 'tab1'"
+                    :class="{ 'active': activeTab === 'tab1' }"
+                    class="tab-button"
+                >
+                    whatsApp
+                </button>
+
+                <button
+                    @click="activeTab = 'tab2'"
+                    :class="{ 'active': activeTab === 'tab2' }"
+                    class="tab-button"
+                >
+                    Telegram
+                </button>
             </div>
-            <div>
-                <button type="submit">Login</button>
+
+        <div class="tab-content">
+            <div x-show="activeTab === 'tab1'" class="tab-panel">
+                <form action="{{ route('send-otp') }}" method="POST">
+                    @csrf
+                    <div class="otp-container">
+                        <input type="text" name="name" placeholder="Your Name" value="{{ session('name') }}" required>
+                        <button type="submit" class="otp-button">Send</button>
+                    </div>
+                </form>
+
+                <form action="{{ route('verify-otp') }}" method="POST">
+                    @csrf
+                    <div>
+                        <input type="text" name="otp" placeholder="Enter OTP" required>
+                    </div>
+                    <div>
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
             </div>
-        </form>
+
+            <div x-show="activeTab === 'tab2'" class="tab-panel">
+                @php
+                    $uniqueCode = \Illuminate\Support\Str::uuid();
+                @endphp
+                <a href="https://t.me/SaeedOtpbot?start={{ $uniqueCode }}" target="_blank">
+                    <button>Start Telegram Bot</button>
+                </a>
+                <form action="{{ route('verifyOtpTelegram') }}" method="POST">
+                    @csrf
+                    <div>
+                        <input type="hidden" name="uuid" value="{{ $uniqueCode }}">
+                    </div>
+                    <div>
+                        <input type="text" name="otp" placeholder="Enter OTP" required>
+                    </div>
+                    <div>
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 
     @if(session('success'))
